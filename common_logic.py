@@ -1,10 +1,22 @@
+def pmt(rate, nper, pv, fv=0, when=0):
+    # mimics numpy_financial.pmt function
+    if rate == 0:
+        return -(pv + fv) / nper
 
-import numpy_financial as npf
+    # Adjust for when payments are made at the beginning of the period
+    if when == 'begin' or when == 1:
+        when = 1
+    else:
+        when = 0
 
-def amortization_calculator(interest, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360):
+    # Calculate the periodic payment
+    payment = (rate * (pv * (1 + rate) ** nper + fv)) / ((1 + rate * when) * ((1 + rate) ** nper - 1))
+    return -payment
+
+def amortization_calculator(interest_rate, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360):
     """
     Calculates the important stats from selling a property
-    :param interest: in percentage (8%)
+    :param interest_rate: in percentage (8%)
     :param loan_amount: (in $)
     :param redemption_month: (# months)
     :param hoa: monthly HOA fee (in $)
@@ -12,11 +24,11 @@ def amortization_calculator(interest, loan_amount, redemption_month, hoa, yearly
     :param tenor: (in months)
     :return: cumulative_interest_paid, cumulative_principal_paid, outstanding_principal, monthly_payment, hoa_paid, maintenance_paid
     """
-    monthly_interest = interest / 12 / 100
+    monthly_interest = interest_rate / 12 / 100
     monthly_maintenance_cost = yearly_maintenance_cost / 12
 
     # Calculate monthly payment using numpy_financial's pmt function
-    monthly_payment = npf.pmt(monthly_interest, tenor, -loan_amount)
+    monthly_payment = pmt(monthly_interest, tenor, -loan_amount)
 
     # Initialize variables
     cumulative_interest_paid = 0
@@ -181,8 +193,8 @@ yearly_maintenance_cost = 1200  # $1200 yearly maintenance cost
 tenor = 360  # Defaults to 30 years (360 months) loan unless specified
 redemption_month = 60  # Loan redeemed in 60 months (5 years)
 sticker_profit_from_home_sales = 140000
-actual_profit = sticker_profit_from_home_sales - cumulative_interest_paid - hoa_paid - maintenance_paid
 cumulative_interest_paid, cumulative_principal_paid, outstanding_principal, monthly_payment, hoa_paid, maintenance_paid = amortization_calculator(interest, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor)
+actual_profit = sticker_profit_from_home_sales - cumulative_interest_paid - hoa_paid - maintenance_paid
 
 # Rental Params:
 monthly_rent = 3100  # $1000 initial monthly rent

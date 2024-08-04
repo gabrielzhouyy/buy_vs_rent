@@ -1,19 +1,16 @@
-# 🎈 Blank app template
+# Buy or Rent a house?
+[Link](https://gzhou-buy-vs-rent.streamlit.app/) to the buy vs rent tool
 
-A simple Streamlit app template for you to modify!
+Not sure want to buy Fremont hse or continue renting.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+This tool helps evaluate the circumstances.
 
-### How to run it on your own machine
+## Buy Considerations
+- Need to sink deposit
+- Location
 
-1. Install the requirements
+## Sell Considerations
+- No fixed rent
+- blah blah
 
-   ```
-   $ pip install -r requirements.txt
-   ```
 
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
