@@ -124,3 +124,14 @@ with stats_col2:
     st.write(f"Budget Available for Investment: **${round(total_savings_invested):,}**")
     st.write(f"Total Investment Gains: **${round(total_investment_gains):,}**")
     st.write(f"Investment Balance after Cost of Rent: **${round(final_balance - total_rent_paid):,}**")
+
+# FAQ Section
+st.subheader("Frequently Asked Questions")
+st.write("Q: Why are the drawbacks of Buying?")
+st.write("A: The 2 largest influencers are Opportunity Cost for investment, as well as Amortization. Amortization works in a way where most of your monthly payments go into paying for the interest, rather than reducing the mortgage principal. This trend only reverses after halfway into your loan tenor (ie 15 years later).")
+
+st.write("Q: I buy my house. Why is my net position negative?")
+st.write("A: This is the cost of housing. A cost is always incurred why buying or renting a place. You only see a net positive if you manage to flip the house at a price greater than the cost of house + total interest paid.")
+
+st.write("Q: Did you consider the downpayment?")
+st.write("A: For Buyers, the downpayment is irrelevant regarding your net position because no interest is incurred upon it, nor profit made relevant to it. For Renters, the downpayment amount forms the initial deposit for investment.")
