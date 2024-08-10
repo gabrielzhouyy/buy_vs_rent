@@ -21,7 +21,7 @@ with col1:
     interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
     loan_amount = st.number_input("Loan Amount ($)", min_value=0.0, value=1100000.0)
     year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
-    redemption_year = st.number_input("Duration of Ownership before flipping (years)", min_value=1, value=5)
+    redemption_year = st.number_input("Ownership Duration (years)", min_value=1, value=5)
     sticker_profit_from_home_sales = st.number_input("Profit from Flipping ($)", min_value=0.0, value=140000.0)
     hoa_fee = st.number_input("Monthly HOA Fee ($)", min_value=0.0, value=200.0)
     yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=1200.0)
