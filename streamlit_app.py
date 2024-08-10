@@ -24,7 +24,7 @@ with col1:
     redemption_month = st.number_input("Duration of Ownership before flipping (months)", min_value=1, value=60)
     sticker_profit_from_home_sales = st.number_input("Profit from Flipping ($)", min_value=0.0, value=140000.0)
     hoa_fee = st.number_input("Monthly HOA Fee ($)", min_value=0.0, value=200.0)
-    yearly_maintenance_cost = st.number_input("Yearly Maintenance Cost ($)", min_value=0.0, value=1200.0)
+    yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=1200.0)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
