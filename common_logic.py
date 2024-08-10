@@ -78,17 +78,21 @@ def amortization_calculator(interest_rate, loan_amount, redemption_month, hoa, y
 
 
 
-def rent_calculator(monthly_rent, inflation, redemption_month):
+def rent_calculator(monthly_rent, inflation, redemption_month, comparative_mthly_installment=None):
     """
-    Calculates the total and average monthly rent over a specified period, taking into account yearly inflation
+    Calculates the total and average monthly rent over a specified period, taking into account yearly inflation and a potential comparative monthly installment
     :param monthly_rent: initial monthly rent (in $)
     :param inflation: yearly inflation rate (in %)
     :param redemption_month: total number of months to calculate rent for
-    :return: total_rent, average_monthly_rent
+    :param comparative_mthly_installment: optional monthly installment for comparison (in $)
+    :return: total_rent, average_monthly_rent, final_monthly_rent
     """
     total_rent = 0
     months = 0
     inflation_rate = inflation / 100
+
+    if comparative_mthly_installment and comparative_mthly_installment < monthly_rent:
+        monthly_rent = comparative_mthly_installment
 
     while months < redemption_month:
         for _ in range(12):

@@ -57,7 +57,7 @@ cumulative_interest_paid, cumulative_principal_paid, outstanding_principal, mont
 actual_profit = sticker_profit_from_home_sales - cumulative_interest_paid - hoa_paid - maintenance_paid
 
 # Call the rent_calculator with user input
-total_rent_paid, average_monthly_rent, final_monthly_rent = rent_calculator(monthly_rent, inflation, redemption_month)
+total_rent_paid, average_monthly_rent, final_monthly_rent = rent_calculator(monthly_rent, inflation, redemption_month,comparative_mthly_installment=monthly_payment)
 
 # Call the investment_calculator with user input
 monthly_contribution = monthly_payment - monthly_rent  # Rent, or $3400 monthly contribution
