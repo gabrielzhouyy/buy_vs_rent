@@ -55,6 +55,9 @@ cumulative_interest_paid, cumulative_principal_paid, outstanding_principal, mont
     interest_rate, loan_amount, redemption_month, hoa_fee, yearly_maintenance_cost, tenor)
 actual_profit = sticker_profit_from_home_sales - cumulative_interest_paid - hoa_paid - maintenance_paid
 
+# Cosmetics for printing
+cosmetics_rent = min(monthly_rent,monthly_payment)
+
 # Call the rent_calculator with user input
 total_rent_paid, average_monthly_rent, final_monthly_rent = rent_calculator(monthly_rent, inflation, redemption_month,comparative_mthly_installment=monthly_payment)
 
@@ -64,6 +67,8 @@ investment_months = redemption_month  # Calculate returns for 60 months (5 years
 annual_contribution_incr_pct = -inflation  # annual contribution decreases since more $ going into rent rather than investment
 total_savings_invested, total_investment_gains, final_balance = investment_calculator(
     initial_deposit, monthly_contribution, annual_returns, investment_months, annual_contribution_incr_pct)
+
+
 
 # Results Section
 st.subheader("Results")
