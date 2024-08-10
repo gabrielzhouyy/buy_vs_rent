@@ -105,7 +105,7 @@ def rent_calculator(monthly_rent, inflation, redemption_month, comparative_mthly
     average_monthly_rent = total_rent / months
     final_monthly_rent = monthly_rent
 
-    return total_rent, average_monthly_rent, final_monthly_rent, monthly_rent
+    return total_rent, average_monthly_rent, final_monthly_rent
 
 # # Rental Projections:
 # monthly_rent = 3100  # $1000 initial monthly rent
