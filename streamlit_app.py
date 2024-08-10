@@ -116,7 +116,7 @@ with stats_col1:
     st.write(f"Outstanding Principal: **${round(outstanding_principal):,}**")
     st.write(f"Monthly Payment: **${round(monthly_payment):,}**")
     st.write(f"Total HOA Paid: **${round(hoa_paid):,}**")
-    st.write(f"Maintenance Paid: **${round(maintenance_paid):,}**")
+    st.write(f"Maintenance/Taxes Paid: **${round(maintenance_paid):,}**")
     st.write(f"Profit less interest & charges: **${round(actual_profit):,}**")
 
 with stats_col2:
