@@ -1,6 +1,5 @@
 import streamlit as st
-from common_logic import amortization_calculator, rent_calculator, \
-    investment_calculator  # Import the function from common_logic.py
+from common_logic import amortization_calculator, rent_calculator, investment_calculator  # Import the function from common_logic.py
 
 st.title("Buy vs Rent Decision Tool")
 
@@ -138,3 +137,6 @@ st.write("This is the cost of housing. A cost is always incurred when buying or 
 
 st.write("**Did you consider the downpayment?**")
 st.write("For Buyers, the downpayment is irrelevant regarding your net position because no interest is incurred upon it, nor profit made relevant to it. For Renters, the downpayment amount forms the initial deposit for investment.")
+
+st.write("**Where can I peek into the logic?**")
+st.markdown(f"You can find the code powering this tool [here](https://github.com/gabrielzhouyy/buy_vs_rent/blob/main/streamlit_app.py).")
