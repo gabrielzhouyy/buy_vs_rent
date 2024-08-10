@@ -143,5 +143,8 @@ st.write("This is the cost of housing. A cost is always incurred when buying or 
 st.write("**Did you consider the downpayment?**")
 st.write("For Buyers, the downpayment is irrelevant regarding your net position because no interest is incurred upon it, nor profit made relevant to it. For Renters, the downpayment amount forms the initial deposit for investment.")
 
+st.write("**Why is my Monthly Housing Budget so low?**")
+st.write("The Housing Budget is determined by the monthly amount you would spend if you had bought a house - this is calculated as the monthly installment. If you have specified a rent that is larger than this monthly budget, the budget will supercede the rent. To use this tool to calculate rental budget, try increasing the Loan Amount.")
+
 st.write("**Where can I peek into the logic?**")
 st.markdown(f"You can find the code powering this tool [here](https://github.com/gabrielzhouyy/buy_vs_rent/blob/main/streamlit_app.py).")
