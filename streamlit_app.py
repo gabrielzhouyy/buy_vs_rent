@@ -81,9 +81,9 @@ with result_col1:
         unsafe_allow_html=True
     )
     st.markdown(f"Monthly Housing Expense of **${round(monthly_payment):,}**.")
-    st.markdown(f"You bought a property with a **${round(loan_amount):,}** loan.")
+    st.markdown(f"You buy a property with a **${round(loan_amount):,}** loan.")
     st.markdown(
-        f"You sold the place after **{redemption_month}** months and paid **${round(cumulative_interest_paid):,}** in total interest, which was financed by sales profit of **{int(sticker_profit_from_home_sales)}**.")
+        f"You sell the place after **{redemption_month}** months and pay **${round(cumulative_interest_paid):,}** in total interest, which is financed by sales profit of **{int(sticker_profit_from_home_sales)}**.")
     st.markdown(f"If you sell your house, your net position is **${actual_profit:,.0f}**.")
     st.markdown(f"If you don't sell the house, your net position is  **${total_savings_invested + loan_amount - cumulative_interest_paid - hoa_paid - maintenance_paid:,.0f}**.")
     st.markdown("</div>", unsafe_allow_html=True)
@@ -115,7 +115,7 @@ with stats_col1:
     st.write(f"Cumulative Principal Paid: **${round(cumulative_principal_paid):,}**")
     st.write(f"Outstanding Principal: **${round(outstanding_principal):,}**")
     st.write(f"Monthly Payment: **${round(monthly_payment):,}**")
-    st.write(f"Total HOA Paid: **${round(hoa_paid):,}**")
+    st.write(f"HOA Paid: **${round(hoa_paid):,}**")
     st.write(f"Maintenance/Taxes Paid: **${round(maintenance_paid):,}**")
     st.write(f"Profit less interest & charges: **${round(actual_profit):,}**")
 
