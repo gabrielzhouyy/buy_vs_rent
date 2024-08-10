@@ -46,7 +46,7 @@ with col2:
     # Opportunity Cost Inputs
     initial_deposit = st.number_input("Mortgage Downpayment/Initial Investment ($)", min_value=0.0,
                                       value=200000.0)  # Replace with actual downpayment value
-    annual_returns = st.number_input("Annual Return Rate (%)", min_value=0.0, value=5.0)
+    annual_returns = st.number_input("Annual Investment Return Rate (%)", min_value=0.0, value=5.0)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
