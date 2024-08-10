@@ -83,7 +83,7 @@ with result_col1:
     st.markdown(f"Monthly Housing Expense of **${round(monthly_payment):,}**.")
     st.markdown(f"You bought a property with a **${round(loan_amount):,}** loan.")
     st.markdown(
-        f"You sold the place after **{redemption_year}** years and paid **${round(cumulative_interest_paid):,}** in total interest, which was financed by sales profit of **{int(sticker_profit_from_home_sales)}**.")
+        f"You sold the place after **{redemption_month}** months and paid **${round(cumulative_interest_paid):,}** in total interest, which was financed by sales profit of **{int(sticker_profit_from_home_sales)}**.")
     st.markdown(f"Overall, your net position from flipping was **${actual_profit:,.0f}**.")
     st.markdown("</div>", unsafe_allow_html=True)
 
