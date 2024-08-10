@@ -91,13 +91,13 @@ def rent_calculator(monthly_rent, inflation, redemption_month, comparative_mthly
     months = 0
     inflation_rate = inflation / 100
 
-    if comparative_mthly_installment and comparative_mthly_installment < monthly_rent:
-        monthly_rent = comparative_mthly_installment
-
     while months < redemption_month:
         for _ in range(12):
             if months >= redemption_month:
                 break
+            # Cap monthly rent if comparative installment is provided
+            if comparative_mthly_installment:
+                monthly_rent = min(monthly_rent, comparative_mthly_installment)
             total_rent += monthly_rent
             months += 1
         monthly_rent += monthly_rent * inflation_rate
