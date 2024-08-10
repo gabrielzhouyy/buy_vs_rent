@@ -98,7 +98,7 @@ with result_col2:
     )
     st.markdown(f"Monthly Housing Budget of **${round(monthly_payment):,}**.")
     st.markdown(
-        f"You rent at **${int(monthly_rent)}** and invest the remaining of the monthly budget. Your rent increases by **{inflation}%** every year.")
+        f"You rent at **${int(min(monthly_rent,monthly_payment)}** and invest the remaining of the monthly budget. Your rent increases by **{inflation}%** every year.")
     st.markdown(
         f"After **{int(redemption_month)}** months, you'd have spent **${round(total_rent_paid):,}** on rent. You've invested **{int(total_savings_invested)}** in total, gaining **{int(total_investment_gains)}** in returns at a **{annual_returns}%** return rate.")
     st.markdown(
