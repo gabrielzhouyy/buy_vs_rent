@@ -53,7 +53,7 @@ with col2:
 # Call the amortization_calculator function with user input
 cumulative_interest_paid, cumulative_principal_paid, outstanding_principal, monthly_payment, hoa_paid, maintenance_paid = amortization_calculator(
     interest_rate, loan_amount, redemption_month, hoa_fee, yearly_maintenance_cost, tenor)
-actual_profit = sticker_profit_from_home_sales - cumulative_interest_paid - hoa_paid - maintenance_paid
+actual_profit = (loan_amount + initial_deposit + sticker_profit_from_home_sales) - initial_deposit - cumulative_interest_paid - hoa_paid - maintenance_paid - outstanding_principal
 
 # Cosmetics for printing
 cosmetics_rent = min(monthly_rent,monthly_payment)
