@@ -5,7 +5,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-st.title("Buy vs Rent Break-Even Chart")
 
 def pmt(rate, nper, pv, fv=0, when=0):
     # mimics numpy_financial.pmt function
@@ -119,27 +118,37 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 
     # Concatenate the original DataFrame with the new ones
     df = pd.concat([df] + new_dfs, ignore_index=True)
-    df2 = df[['loan_amt', 'year','month','avr_monthly_interest',
+    df2 = df[['loan_amt', 'year',
+              'avr_monthly_interest_principal_fees',
+              'avr_monthly_principal',
+              'avr_monthly_interest',
+              'avr_monthly_interest_and_principal',
               'avr_monthly_interest_and_fees',
               'cumulative_interest_paid',
-              'avr_monthly_principal',
-              'avr_monthly_interest_and_principal',
-              'avr_monthly_interest_principal_fees'
               ]]
 
     return df2
 
 
+# Copy starts here:
+st.title("Buy vs Rent Break-Even Chart")
+
+st.markdown("Is your rent money going to waste? See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home.")
+st.markdown("Start with comparing against the monthly averaged interest + principal + fees. In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home")
+
+# User Inputs
 interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
 year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
 hoa_fee = st.number_input("Monthly HOA Fee ($)", min_value=0.0, value=200.0)
 yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=1200.0)
 tenor = year_tenor*12
 
+# Call the functions
 display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_maintenance_cost)
 display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', ascending=False)
 
 
+# Print the table
 st.dataframe(display_table)
 
 
