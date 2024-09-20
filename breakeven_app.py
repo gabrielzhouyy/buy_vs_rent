@@ -133,7 +133,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 # Copy starts here:
 st.title("Buy vs Rent Break-Even Chart")
 
-st.markdown("*Is your rent money going to waste?* See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!")
+st.markdown("*Is your rent money going to waste?*  See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!")
 
 
 # User Inputs
