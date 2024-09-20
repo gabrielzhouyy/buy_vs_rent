@@ -160,13 +160,13 @@ st.dataframe(display_table)
 st.markdown("""
     ## How it works
 
-    First, mortgage is computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
+    - First, mortgage is computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
 
-    Next, monthly and annual fees are added to get a cumulative cost over the entire term of the loan.
+    - Next, monthly and annual fees are added to get a cumulative cost over the entire term of the loan.
 
-    Then, these costs are divided equally into monthly installments to easily compare against your monthly rent. It's really just the same as the installment your FI provides you with.
+    - Then, these costs are divided equally into monthly installments to easily compare against your monthly rent. It's really just the same as the installment your FI provides you with.
 
-    Finally, we repeat this across various loan amounts so you can get a sense of how much loan your rent will break-even with.
+    - Finally, we repeat this across various loan amounts so you can get a sense of how much loan your rent will break-even with.
 
     """)
 
