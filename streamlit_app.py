@@ -6,7 +6,7 @@ st.title("Buy vs Rent Decision Tool")
 st.markdown("""
     *Wondering how your future position would look like if you bought a home?*
     
-    Fill in parameters under the BUY and RENT boxes, and the tool will help you project your financial position. Best viewed in landscape orientation or on desktop. **Related:** [Buy vs Rent Break-even Chart](https://gzhou-buy-vs-rent-breakeven.streamlit.app//)
+    This tool will help you project your financial position. Best viewed in landscape orientation or on desktop. **Related:** [Buy vs Rent Break-even Chart](https://gzhou-buy-vs-rent-breakeven.streamlit.app//)
 
     """)
 
