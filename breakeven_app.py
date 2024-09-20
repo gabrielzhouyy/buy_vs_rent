@@ -149,7 +149,7 @@ display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', a
 st.markdown("""
     Compare your rent against the **average monthly interest + principal + fees**.
 
-    When you find your rent in that column, the corresponding loan amount is your break-even point. This is where the same money will cover the loan, taxes, hoa and the full cost of the home.
+    The moment your rent increases to the loan amount needed for a home purchase, if you buy, you'd break-even for the full loan term, and make gains after that.
 
     """)
 
