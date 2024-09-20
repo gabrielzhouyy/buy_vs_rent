@@ -133,7 +133,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 # Copy starts here:
 st.title("Buy vs Rent Break-Even Chart")
 
-st.markdown("Is your rent money going to waste? See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home.")
+st.markdown("*Is your rent money going to waste?* See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!")
 
 
 # User Inputs
@@ -148,10 +148,16 @@ display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_m
 display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', ascending=False)
 
 # Teach user how to use the table
-st.markdown("Start with comparing against the **average monthly interest + principal + fees**. In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home")
+st.markdown("Start with comparing against the **average monthly interest + principal + fees**.\n"
+            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
 
 # Print the table
 st.dataframe(display_table)
+
+# Teach user how to use the table
+st.markdown("## How it works\n"
+            "Start with comparing against the **average monthly interest + principal + fees**.\n"
+            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
 
 
 
