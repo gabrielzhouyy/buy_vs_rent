@@ -129,8 +129,9 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 
     return df2
 
-# display_table = produce_break_even_table(5.6, 60, 450, 100)
+display_table = produce_break_even_table(5.6, 60, 450, 100)
 
+st.dataframe(display_table)
 
 
 
