@@ -150,13 +150,17 @@ st.markdown("""
     Compare your rent against the **average monthly interest + principal + fees**.
 
     The moment your rent increases to correspond with the loan amount needed for a home purchase, if you buy, you'd break-even for the full loan term, and live rent-free after that.
-    
-    If you're interested in selling, this is not the chart for you. Use [this](https://gzhou-buy-vs-rent.streamlit.app/) instead to project your financial position.
 
     """)
 
 # Print the table
 st.dataframe(display_table)
+
+st.markdown("""
+    
+    If you're interested in selling/flipping, this is not the chart for you. Use [this](https://gzhou-buy-vs-rent.streamlit.app/) instead to project your financial position.
+
+    """)
 
 # Teach user how to use the table
 st.markdown("""
