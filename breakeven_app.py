@@ -114,6 +114,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
     # Concatenate the original DataFrame with the new ones
     df = pd.concat([df] + new_dfs, ignore_index=True)
     df2 = df[['loan_amt', 'year',
+              'avr_monthly_interest_and_fees'
               'avr_monthly_interest_principal_fees',
               'avr_monthly_principal',
               'avr_monthly_interest',
@@ -147,7 +148,7 @@ display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', a
 
 # Teach user how to use the table
 st.markdown("""
-    Compare your rent against the **average monthly interest + principal + fees**.
+    Compare your rent against the **average monthly interest + fees**.
 
     The moment your rent increases to correspond with the loan amount needed for a home purchase, if you buy, you'd break-even for the full loan term, and live rent-free after that.
 
