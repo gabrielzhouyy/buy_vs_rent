@@ -130,7 +130,7 @@ st.title("Buy vs Rent Break-Even Chart")
 st.markdown("""
     *Is your rent money going to waste?*
 
-    See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!
+    See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home! Related: [Buy vs Rent Simulator](https://gzhou-buy-vs-rent.streamlit.app/)
 
     """)
 
