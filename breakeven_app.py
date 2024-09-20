@@ -113,7 +113,7 @@ def get_cost_metrics(interest_rate, loan_amount, redemption_month, hoa, yearly_m
 def produce_break_even_table(interest, tenor, hoa, maintenance):
     df = get_cost_metrics(interest, 100000, tenor, hoa, maintenance, tenor=tenor)
     new_dfs = []
-    for i in range(110000, 1200000, 10000):
+    for i in range(110000, 1210000, 10000):
         new_df = get_cost_metrics(interest, i, tenor, hoa, maintenance, tenor)
         new_dfs.append(new_df)
 
@@ -129,9 +129,20 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 
     return df2
 
-display_table = produce_break_even_table(5.6, 60, 450, 100)
+
+interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
+year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
+hoa_fee = st.number_input("Monthly HOA Fee ($)", min_value=0.0, value=200.0)
+yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=1200.0)
+tenor = year_tenor*12
+
+display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_maintenance_cost)
+
+
 
 st.dataframe(display_table.sort_values(by='loan_amt', ascending=False))
+
+
 
 
 
