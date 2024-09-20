@@ -4,11 +4,9 @@ from common_logic import amortization_calculator, rent_calculator, investment_ca
 st.title("Buy vs Rent Decision Tool")
 
 st.markdown("""
-    Best viewed in landscape orientation or on desktop.
-    
     *Wondering how your future position would look like if you bought a home?*
-
-    Fill in parameters under the pink BUY and blue RENT boxes, and the tool will help you project your financial position. Related: [Buy vs Rent Break-even Chart](https://gzhou-buy-vs-rent-breakeven.streamlit.app//)
+    
+    Fill in parameters under the BUY and RENT boxes, and the tool will help you project your financial position. Best viewed in landscape orientation or on desktop. **Related:** [Buy vs Rent Break-even Chart](https://gzhou-buy-vs-rent-breakeven.streamlit.app//)
 
     """)
 
