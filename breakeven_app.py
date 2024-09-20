@@ -137,10 +137,10 @@ yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expens
 tenor = year_tenor*12
 
 display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_maintenance_cost)
+display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', ascending=False)
 
 
-
-st.dataframe(display_table.sort_values(by='loan_amt', ascending=False))
+st.dataframe(display_table)
 
 
 
