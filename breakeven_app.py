@@ -167,7 +167,7 @@ st.markdown("""
 st.markdown("""
     ## How it works
 
-    - First, mortgage is computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
+    - First, the interest and principals for each month are computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
 
     - Next, monthly and annual fees are added to get a cumulative cost over the entire term of the loan.
 
