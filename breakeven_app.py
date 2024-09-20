@@ -114,7 +114,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
     # Concatenate the original DataFrame with the new ones
     df = pd.concat([df] + new_dfs, ignore_index=True)
     df2 = df[['loan_amt', 'year',
-              'avr_monthly_interest_and_fees'
+              'avr_monthly_interest_and_fees',
               'avr_monthly_interest_principal_fees',
               'avr_monthly_principal',
               'avr_monthly_interest',
