@@ -145,8 +145,8 @@ st.markdown("""
 # User Inputs
 interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
 year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
-hoa_fee = st.number_input("Monthly Expenses/HOA ($)", min_value=0.0, value=200.0)
-yearly_maintenance_cost = st.number_input("Annual Expenses (Taxes/Maintenance/Others) ($)", min_value=0.0, value=1200)
+hoa_fee = st.number_input("Monthly HOA/Fees ($)", min_value=0.0, value=200.0)
+yearly_maintenance_cost = st.number_input("Annual Fees (Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=15000)
 tenor = year_tenor*12
 
 # Call the functions
@@ -155,28 +155,22 @@ display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', a
 
 # Teach user how to use the table
 st.markdown("""
-    Compare your rent against the **average monthly interest + principal + fees**.
+    Start with comparing against the **average monthly interest + principal + fees**.
     
-    When you find your rent in that column, the corresponding loan amount is your break-even point. This is where the same money will cover the loan, taxes, hoa and the full cost of the home.
+    In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.
     
     """)
 
 # Print the table
 st.dataframe(display_table)
 
-# # Teach user how to use the table
-# st.markdown("""
-#     ## How it works
-#
-#     First, mortgage is computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
-#
-#     Next, monthly and annual fees are added to get a cumulative cost over the entire term of the loan.
-#
-#     Then, these costs are divided equally into monthly installments to easily compare against your monthly rent. It's really just the same as the installment your FI provides you with.
-#
-#     Finally, we repeat this across various loan amounts so you can get a sense of how much loan your rent will break-even with.
-#
-#     """)
+# Teach user how to use the table
+st.markdown("## How it works\n"
+            "Start with comparing against the **average monthly interest + principal + fees**.\n"
+            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
+
+
+
 
 
 
