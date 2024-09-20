@@ -131,7 +131,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
 
 display_table = produce_break_even_table(5.6, 60, 450, 100)
 
-st.dataframe(display_table)
+st.dataframe(display_table.sort_values(by='loan_amt', ascending=False))
 
 
 
