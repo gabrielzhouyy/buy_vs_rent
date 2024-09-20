@@ -95,6 +95,8 @@ def get_cost_metrics(interest_rate, loan_amount, redemption_month, hoa, yearly_m
     df['loan_amt'] = loan_amount
     df['avr_monthly_interest'] = df['cumulative_interest_paid'] / df['payment']                                 # Over the tenor, monthly cost of funds
     df['total_interest_and_fees'] = df['cumulative_interest_paid'] + df['hoa_paid'] + df['maintenance_paid']    # Over the tenor, cost of funds + fees
+    df['total_fees'] = df['hoa_paid'] + df['maintenance_paid']
+    df['avr_monthly_fees'] = df['total_fees'] / df['payment']
     df['avr_monthly_interest_and_fees'] = df['total_interest_and_fees'] / df['payment']
     df['avr_monthly_principal'] = loan_amount/tenor
     df['avr_monthly_interest_and_principal'] = df['avr_monthly_interest'] + df['avr_monthly_principal']
@@ -122,8 +124,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
               'avr_monthly_interest_principal_fees',
               'avr_monthly_principal',
               'avr_monthly_interest',
-              'avr_monthly_interest_and_principal',
-              'avr_monthly_interest_and_fees',
+              'avr_monthly_fees',
               'cumulative_interest_paid',
               ]]
 
@@ -153,8 +154,12 @@ display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_m
 display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', ascending=False)
 
 # Teach user how to use the table
-st.markdown("Start with comparing against the **average monthly interest + principal + fees**.\n"
-            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
+st.markdown("""
+    Start with comparing against the **average monthly interest + principal + fees**.
+    
+    In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.
+    
+    """)
 
 # Print the table
 st.dataframe(display_table)
