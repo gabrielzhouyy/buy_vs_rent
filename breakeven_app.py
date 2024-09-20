@@ -149,7 +149,7 @@ display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', a
 st.markdown("""
     Compare your rent against the **average monthly interest + principal + fees**.
 
-    The moment your rent increases to the loan amount needed for a home purchase, if you buy, you'd break-even for the full loan term, and make gains after that.
+    The moment your rent increases to correspond with the loan amount needed for a home purchase, if you buy, you'd break-even for the full loan term, and make gains after that.
 
     """)
 
