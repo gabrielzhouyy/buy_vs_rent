@@ -5,7 +5,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-
 def pmt(rate, nper, pv, fv=0, when=0):
     # mimics numpy_financial.pmt function
     if rate == 0:
@@ -20,9 +19,6 @@ def pmt(rate, nper, pv, fv=0, when=0):
     # Calculate the periodic payment
     payment = (rate * (pv * (1 + rate) ** nper + fv)) / ((1 + rate * when) * ((1 + rate) ** nper - 1))
     return -payment
-
-
-
 
 
 def amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360):
@@ -62,12 +58,12 @@ def amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly
         maintenance_paid += monthly_maintenance_cost
 
         outstanding_principal -= principal_payment
-        month +=1
+        month += 1
 
         amortization_data.append([
             payment,
             year,
-            month%12,
+            month % 12,
             monthly_payment,
             interest_payment,
             cumulative_interest_paid,
@@ -76,10 +72,8 @@ def amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly
             maintenance_paid
         ])
 
-        if payment % 12 ==0:
+        if payment % 12 == 0:
             year += 1
-
-
 
         if outstanding_principal <= 0:
             break
@@ -87,26 +81,27 @@ def amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly
     return amortization_data
 
 
-
 def get_cost_metrics(interest_rate, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360):
-    df = pd.DataFrame(amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360),
-                      columns=["payment", "year", "month", "monthly_payment", "interest_paid",
-                               "cumulative_interest_paid", "outstanding_principal", "hoa_paid", "maintenance_paid"])
+    df = pd.DataFrame(
+        amortization_table(interest_rate, loan_amount, redemption_month, hoa, yearly_maintenance_cost, tenor=360),
+        columns=["payment", "year", "month", "monthly_payment", "interest_paid",
+                 "cumulative_interest_paid", "outstanding_principal", "hoa_paid", "maintenance_paid"])
     df['loan_amt'] = loan_amount
-    df['avr_monthly_interest'] = df['cumulative_interest_paid'] / df['payment']                                 # Over the tenor, monthly cost of funds
-    df['total_interest_and_fees'] = df['cumulative_interest_paid'] + df['hoa_paid'] + df['maintenance_paid']    # Over the tenor, cost of funds + fees
+    df['avr_monthly_interest'] = df['cumulative_interest_paid'] / df['payment']  # Over the tenor, monthly cost of funds
+    df['total_interest_and_fees'] = df['cumulative_interest_paid'] + df['hoa_paid'] + df[
+        'maintenance_paid']  # Over the tenor, cost of funds + fees
+    df['total_fees'] = df['hoa_paid'] + df['maintenance_paid']
+    df['avr_monthly_fees'] = df['total_fees'] / df['payment']
     df['avr_monthly_interest_and_fees'] = df['total_interest_and_fees'] / df['payment']
-    df['avr_monthly_principal'] = loan_amount/tenor
+    df['avr_monthly_principal'] = loan_amount / tenor
     df['avr_monthly_interest_and_principal'] = df['avr_monthly_interest'] + df['avr_monthly_principal']
     df['avr_monthly_interest_principal_fees'] = df['avr_monthly_interest_and_fees'] + df['avr_monthly_principal']
     df = df.round(2)
 
-    return df.tail(1) # Take the last entry as we assume no redemption
+    return df.tail(1)  # Take the last entry as we assume no redemption
+
 
 # the = get_costs(5.6, 1000000, 360, 450, 100, tenor=360)
-
-
-
 
 
 def produce_break_even_table(interest, tenor, hoa, maintenance):
@@ -122,8 +117,7 @@ def produce_break_even_table(interest, tenor, hoa, maintenance):
               'avr_monthly_interest_principal_fees',
               'avr_monthly_principal',
               'avr_monthly_interest',
-              'avr_monthly_interest_and_principal',
-              'avr_monthly_interest_and_fees',
+              'avr_monthly_fees',
               'cumulative_interest_paid',
               ]]
 
@@ -135,37 +129,46 @@ st.title("Buy vs Rent Break-Even Chart")
 
 st.markdown("""
     *Is your rent money going to waste?*
-            
-    See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!
-    
-    """)
 
+    See how much a mortgage would cost you and compare it to your current rent. If the numbers are similar, consider taking out a loan and owning your own home!
+
+    """)
 
 # User Inputs
 interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
 year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
-hoa_fee = st.number_input("Monthly HOA Fee ($)", min_value=0.0, value=200.0)
-yearly_maintenance_cost = st.number_input("Annual Taxes/Maintenance/Other Expenses ($)", min_value=0.0, value=1200.0)
-tenor = year_tenor*12
+hoa_fee = st.number_input("Monthly Expenses/HOA ($)", min_value=0.0, value=200.0)
+yearly_maintenance_cost = st.number_input("Annual Expenses (Taxes/Maintenance/Others) ($)", min_value=0.0, value=1200.0)
+tenor = year_tenor * 12
 
 # Call the functions
 display_table = produce_break_even_table(interest_rate, tenor, hoa_fee, yearly_maintenance_cost)
 display_table = display_table.set_index('loan_amt').sort_values(by='loan_amt', ascending=False)
 
 # Teach user how to use the table
-st.markdown("""Start with comparing against the **average monthly interest + principal + fees**.\n"
-            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
+st.markdown("""
+    Compare your rent against the **average monthly interest + principal + fees**.
+
+    When you find your rent in that column, the corresponding loan amount is your break-even point. This is where the same money will cover the loan, taxes, hoa and the full cost of the home.
+
+    """)
 
 # Print the table
 st.dataframe(display_table)
 
-# Teach user how to use the table
-st.markdown("## How it works\n"
-            "Start with comparing against the **average monthly interest + principal + fees**.\n"
-            "In this scenario, your monthly out-of-pocket will cover for the loan, taxes, hoa and even the full cost of the home.")
-
-
-
+# # Teach user how to use the table
+# st.markdown("""
+#     ## How it works
+#
+#     First, mortgage is computed using the [PMT formula](https://en.wikipedia.org/wiki/Compound_interest#Monthly_amortized_loan_or_mortgage_payments). You can do it youself with an [amortization calculator](https://bretwhissel.net/cgi-bin/amortize).
+#
+#     Next, monthly and annual fees are added to get a cumulative cost over the entire term of the loan.
+#
+#     Then, these costs are divided equally into monthly installments to easily compare against your monthly rent. It's really just the same as the installment your FI provides you with.
+#
+#     Finally, we repeat this across various loan amounts so you can get a sense of how much loan your rent will break-even with.
+#
+#     """)
 
 
 
