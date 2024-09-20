@@ -138,7 +138,7 @@ st.markdown("""
 interest_rate = st.number_input("Annual Interest Rate (%)", min_value=0.0, max_value=20.0, value=7.0)
 year_tenor = st.number_input("Loan Tenor (years)", min_value=1, value=30)  # Optional parameter
 hoa_fee = st.number_input("Monthly Expenses/HOA ($)", min_value=0.0, value=200.0)
-yearly_maintenance_cost = st.number_input("Annual Expenses (Taxes/Maintenance/Others) ($)", min_value=0.0, value=1200.0)
+yearly_maintenance_cost = st.number_input("Annual Expenses (Taxes/Maintenance/Others) ($)", min_value=0.0, value=15000.0)
 tenor = year_tenor * 12
 
 # Call the functions
